@@ -7,7 +7,9 @@ build-frontend-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/frontend"
       --dockerfile "${CI_PROJECT_DIR}/src/frontend/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:frontend"
+      --destination "${CI_REGISTRY_IMAGE}/frontend:${$CI_COMMIT_TAG}"
+  rules:
+    - if: $CI_COMMIT_TAG
 
 build-beverage-service-container-image:
   stage: build
@@ -18,7 +20,9 @@ build-beverage-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/beverageService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/beverageService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:beverageService"
+      --destination "${CI_REGISTRY_IMAGE}/beverageService:${$CI_COMMIT_TAG}"
+  rules::${$CI_COMMIT_TAG}
+    - if: $CI_COMMIT_TAG
 
 build-defrosting-service-container-image:
   stage: build
@@ -29,7 +33,9 @@ build-defrosting-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/defrostingService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/defrostingService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:defrostingService"
+      --destination "${CI_REGISTRY_IMAGE}/defrostingService:${$CI_COMMIT_TAG}"
+  rules:
+    - if: $CI_COMMIT_TAG
 
 build-popcorn-service-container-image:
   stage: build
@@ -40,7 +46,9 @@ build-popcorn-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/popcornService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/popcornService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:popcornService"
+      --destination "${CI_REGISTRY_IMAGE}/popcornService:${$CI_COMMIT_TAG}"
+  rules:
+    - if: $CI_COMMIT_TAG
 
 build-potato-service-container-image:
   stage: build
@@ -51,4 +59,6 @@ build-potato-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/potatoService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/potatoService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:potatoService"
+      --destination "${CI_REGISTRY_IMAGE}/potatoService:${$CI_COMMIT_TAG}"
+  rules:
+    - if: $CI_COMMIT_TAG
