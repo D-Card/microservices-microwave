@@ -52,3 +52,5 @@ build-potato-service-container-image:
       --context "${CI_PROJECT_DIR}/src/backend/potatoService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/potatoService/Dockerfile"
       --destination "potato-service:${CI_COMMIT_TAG}"
+rules:
+  - if: $CI_COMMIT_TAG
