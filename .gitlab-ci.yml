@@ -1,7 +1,4 @@
-variables:
-  GLOBAL_VAR: "A global variable"
-
-build-frontend-container:
+build-frontend-container-image:
   stage: build
   image:
     name: gcr.io/kaniko-project/executor:v1.14.0-debug
@@ -10,4 +7,48 @@ build-frontend-container:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/frontend"
       --dockerfile "${CI_PROJECT_DIR}/src/frontend/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:frontend"
+      --destination "frontend:${CI_COMMIT_TAG}"
+
+build-beverage-service-container-image:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/src/backend/beverageService"
+      --dockerfile "${CI_PROJECT_DIR}/src/backend/beverageService/Dockerfile"
+      --destination "beverage-service:${CI_COMMIT_TAG}"
+
+build-defrosting-service-container-image:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/src/backend/defrostingService"
+      --dockerfile "${CI_PROJECT_DIR}/src/backend/defrostingService/Dockerfile"
+      --destination "defrosting-service:${CI_COMMIT_TAG}"
+
+build-popcorn-service-container-image:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/src/backend/popcornService"
+      --dockerfile "${CI_PROJECT_DIR}/src/backend/popcornService/Dockerfile"
+      --destination "popcorn-service:${CI_COMMIT_TAG}"
+
+build-potato-service-container-image:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/src/backend/potatoService"
+      --dockerfile "${CI_PROJECT_DIR}/src/backend/potatoService/Dockerfile"
+      --destination "potato-service:${CI_COMMIT_TAG}"
