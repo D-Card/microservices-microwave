@@ -1,5 +1,5 @@
 # Local .terraform directories
-**/.terraform/*
+**/.terraform*
 
 # .tfstate files
 *.tfstate
@@ -163,3 +163,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# GCP credentials
+credentials.json
+
+# Vagrant
+.vagrant
