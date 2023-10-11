@@ -6,7 +6,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/defrost", (req, res) => {
+app.get("/", (req, res) => {
   const weight = parseInt(req.query["weight"]);
   const time = weight * 0.02;
   console.log(`The ${weight}g product is going to be ready in ${time} minutes`);
@@ -14,5 +14,5 @@ app.get("/defrost", (req, res) => {
 });
 
 app.listen(80, () => {
-  console.log(`defrostingService listening at http://10.1.0.2:${80}`);
+  console.log("defrostService listening at port 80");
 });

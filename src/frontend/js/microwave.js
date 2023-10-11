@@ -1,4 +1,3 @@
-let BASE_URL = "http://localhost:80";
 let poweredOn = false;
 let currentDuration = 0;
 let currentFunction = "";
@@ -136,7 +135,7 @@ function start(duration = null) {
       duration =
         parseInt(cookTime.slice(0, 2)) * 60 + parseInt(cookTime.slice(2, 4));
     } else {
-      fetch(BASE_URL + `/${currentFunction}?weight=${weight}`).then((res) =>
+      fetch(`http://${currentFunction}-service/?weight=${weight}`).then((res) =>
         res.json().then((data) => {
           duration = parseFloat(data.time) * 60;
           start(duration);

@@ -16,5 +16,5 @@ app.get("/potato", (req, res) => {
 });
 
 app.listen(80, () => {
-  console.log(`potatoService listening at http://10.1.0.2:${80}`);
+  console.log("potatoService listening at port 80");
 });

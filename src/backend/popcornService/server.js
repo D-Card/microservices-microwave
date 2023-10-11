@@ -6,12 +6,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/popcorn", (req, res) => {
+app.get("/", (req, res) => {
   const time = 3;
-  console.log(`The popcorn is going to be ready in ${result} minutes`);
+  console.log(`The popcorn is going to be ready in ${time} minutes`);
   res.send({ time });
 });
 
 app.listen(80, () => {
-  console.log(`popcornService listening at http://10.1.0.2:${80}`);
+  console.log("popcornService listening at port 80");
 });
