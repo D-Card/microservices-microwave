@@ -20,7 +20,7 @@ build-beverage-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/beverageService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/beverageService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/beverageService:${CI_COMMIT_TAG}"
+      --destination "${CI_REGISTRY_IMAGE}/beverage-service:${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
 
@@ -33,7 +33,7 @@ build-defrosting-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/defrostingService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/defrostingService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/defrostingService:${CI_COMMIT_TAG}"
+      --destination "${CI_REGISTRY_IMAGE}/defrosting-service:${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
 
@@ -46,7 +46,7 @@ build-popcorn-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/popcornService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/popcornService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/popcornService:${CI_COMMIT_TAG}"
+      --destination "${CI_REGISTRY_IMAGE}/popcorn-service:${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
 
@@ -59,6 +59,6 @@ build-potato-service-container-image:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/potatoService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/potatoService/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/potatoService:${CI_COMMIT_TAG}"
+      --destination "${CI_REGISTRY_IMAGE}/potato-service:${CI_COMMIT_TAG}"
   rules:
     - if: $CI_COMMIT_TAG
