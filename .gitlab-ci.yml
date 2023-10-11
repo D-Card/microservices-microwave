@@ -1,0 +1,13 @@
+variables:
+  GLOBAL_VAR: "A global variable"
+
+build-frontend-container:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/src/frontend"
+      --dockerfile "${CI_PROJECT_DIR}/src/frontend/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}:frontend"
