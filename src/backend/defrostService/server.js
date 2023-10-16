@@ -1,10 +1,5 @@
-var express = require("express");
-var app = express();
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+const express = require("express");
+const app = express();
 
 app.get("/", (req, res) => {
   const weight = parseInt(req.query["weight"]);
