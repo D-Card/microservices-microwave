@@ -9,5 +9,5 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --omit=dev
 # Bundle app source
-EXPOSE 8080
+EXPOSE 80
 CMD [ "node", "server.js" ]

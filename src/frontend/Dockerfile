@@ -1,2 +1,3 @@
-FROM nginx
-COPY . /usr/share/nginx/html
+FROM caddy
+COPY . /usr/share/caddy
+COPY Caddyfile /etc/caddy/Caddyfile

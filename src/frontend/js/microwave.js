@@ -135,7 +135,7 @@ function start(duration = null) {
       duration =
         parseInt(cookTime.slice(0, 2)) * 60 + parseInt(cookTime.slice(2, 4));
     } else {
-      fetch(`http://${currentFunction}-service/?weight=${weight}`).then((res) =>
+      fetch(`/api/${currentFunction}-service/?weight=${weight}`).then((res) =>
         res.json().then((data) => {
           duration = parseFloat(data.time) * 60;
           start(duration);
