@@ -25,7 +25,7 @@ data "template_file" "docker_config_script" {
   template = "${file("${path.module}/../dockerconfig.json")}"
   vars = {
     docker-server             = "${var.docker-server}"
-    auth                      = "${var.gitlab-token}"
+    auth                      = base64encode("${var.docker-server}:${var.gitlab-token}")
   }
 }
 
