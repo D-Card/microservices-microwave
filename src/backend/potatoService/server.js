@@ -6,7 +6,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/potato", (req, res) => {
+app.get("/", (req, res) => {
   const weight = parseInt(req.query["weight"]);
   const time = weight * 0.07;
   console.log(
