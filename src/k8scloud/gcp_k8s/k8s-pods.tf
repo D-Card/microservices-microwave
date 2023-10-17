@@ -1,8 +1,12 @@
-variable "docker-server" {
+variable "registry-server" {
     type = string
 }
 
-variable "gitlab-token" {
+variable "registry-username" {
+    type = string
+}
+
+variable "registry-token" {
     type = string
 }
 
