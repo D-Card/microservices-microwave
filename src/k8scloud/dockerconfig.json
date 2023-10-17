@@ -1,0 +1,7 @@
+{
+  "auths": {
+    "${docker-server}": {
+      "auth": "${auth}"
+    }
+  }
+}
