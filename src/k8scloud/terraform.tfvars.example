@@ -9,7 +9,8 @@ workers_count = ""
 # https://cloud.google.com/compute/docs/regions-zones/regions-zones?hl=en_US
 region = ""
 
-# Gitlab registry, username and personal token
-docker-server = ""
-gitlab-token = ""
+# Registry url, username and personal token (for Gitlab)
+registry-server = ""
+registry-username = ""
+registry-token = ""
 

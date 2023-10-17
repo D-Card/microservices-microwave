@@ -24,8 +24,8 @@ resource "kubernetes_secret" "docker-registry" {
 data "template_file" "docker_config_script" {
   template = "${file("${path.module}/../dockerconfig.json")}"
   vars = {
-    docker-server             = "${var.docker-server}"
-    auth                      = base64encode("${var.docker-server}:${var.gitlab-token}")
+    registry-server             = "${var.registry-server}"
+    auth                      = base64encode("${var.registry-username}:${var.registry-token}")
   }
 }
 

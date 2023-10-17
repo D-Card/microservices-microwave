@@ -1,6 +1,6 @@
 {
   "auths": {
-    "${docker-server}": {
+    "${registry-server}": {
       "auth": "${auth}"
     }
   }
