@@ -58,14 +58,3 @@ sudo apt-get -y install google-cloud-sdk-gke-gcloud-auth-plugin
 
 # Install Kubernetes Controller
 sudo apt-get -y install kubectl
-
-# Install Amazon AWS-CLI
-PROCAWS=$(lscpu 2> /dev/null | awk '/Architecture/ {if($2 == "x86_64") {print "x86_64"; exit} else if($2 ~ /arm/) {print "arm"; exit} else if($2 ~ /aarch64/) {print "aarch64"; exit} else {print "386"; exit}}')
-curl "https://awscli.amazonaws.com/awscli-exe-linux-${PROCAWS}.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-
-# Clean up cached packages
-sudo apt-get clean all
-sudo rm ./awscliv2.zip
-
