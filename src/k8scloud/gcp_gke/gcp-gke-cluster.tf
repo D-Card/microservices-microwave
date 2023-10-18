@@ -74,3 +74,8 @@ output "host" {
   value     = google_container_cluster.virtual-microwave.endpoint
   sensitive = true
 }
+
+output "cluster" {
+  value     = google_container_cluster.virtual-microwave
+  sensitive = true
+}

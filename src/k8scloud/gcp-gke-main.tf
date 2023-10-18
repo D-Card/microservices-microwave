@@ -50,6 +50,7 @@ module "gcp_k8s" {
   registry-server = var.registry-server
   registry-username = var.registry-username
   registry-token = var.registry-token
+  cluster = module.gcp_gke.cluster
   
   client_certificate     = module.gcp_gke.client_certificate
   client_key             = module.gcp_gke.client_key

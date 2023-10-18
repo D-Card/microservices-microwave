@@ -7,6 +7,7 @@
 resource "kubernetes_service" "potato-service" {
   metadata {
     name = "potato-service"
+    namespace = kubernetes_namespace.application.id
   }
   spec {
     selector = {
@@ -22,6 +23,7 @@ resource "kubernetes_service" "potato-service" {
 resource "kubernetes_service" "beverage-service" {
   metadata {
     name = "beverage-service"
+    namespace = kubernetes_namespace.application.id
   }
   spec {
     selector = {
@@ -37,6 +39,7 @@ resource "kubernetes_service" "beverage-service" {
 resource "kubernetes_service" "popcorn-service" {
   metadata {
     name = "popcorn-service"
+    namespace = kubernetes_namespace.application.id
   }
   spec {
     selector = {
@@ -52,6 +55,7 @@ resource "kubernetes_service" "popcorn-service" {
 resource "kubernetes_service" "defrost-service" {
   metadata {
     name = "defrost-service"
+    namespace = kubernetes_namespace.application.id
   }
   spec {
     selector = {
@@ -73,6 +77,8 @@ resource "kubernetes_service" "frontend" {
     labels = {
       app  = "virtual-microwave"
     }
+
+    namespace = kubernetes_namespace.application.id
   }
 
   spec {
