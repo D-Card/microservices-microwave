@@ -19,6 +19,7 @@ resource "google_container_cluster" "virtual-microwave" {
   project = var.project
   location = var.region
   initial_node_count = var.workers_count
+  deletion_protection = false
 
   addons_config {
     network_policy_config {
@@ -44,6 +45,7 @@ resource "google_container_cluster" "virtual-microwave" {
       "https://www.googleapis.com/auth/servicecontrol",
       "https://www.googleapis.com/auth/trace.append",
       "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/datastore",
     ]
   }
 
