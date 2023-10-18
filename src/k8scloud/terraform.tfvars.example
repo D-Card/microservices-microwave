@@ -9,7 +9,8 @@ workers_count = ""
 # https://cloud.google.com/compute/docs/regions-zones/regions-zones?hl=en_US
 region = ""
 
-# Registry url, username and personal token (for Gitlab)
+# Registry url, username and personal token
+# Token should have read_registry and write_registry scopes
 registry-server = ""
 registry-username = ""
 registry-token = ""
