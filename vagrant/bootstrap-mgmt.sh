@@ -58,3 +58,6 @@ sudo apt-get -y install google-cloud-sdk-gke-gcloud-auth-plugin
 
 # Install Kubernetes Controller
 sudo apt-get -y install kubectl
+
+# Install istio
+curl -L https://istio.io/downloadIstio | sh - 
