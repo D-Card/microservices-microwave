@@ -18,7 +18,6 @@ resource "google_container_cluster" "virtual-microwave" {
   name     = "virtual-microwave"
   project = var.project
   location = var.region
-  initial_node_count = var.workers_count
   deletion_protection = false
 
   addons_config {
@@ -26,6 +25,23 @@ resource "google_container_cluster" "virtual-microwave" {
       disabled = true
     }
   }
+
+  node_pool {
+    name = "default-node-pool"
+    initial_node_count = 1
+    autoscaling {
+      min_node_count = 1
+      max_node_count = 3
+    }
+  }
+}
+
+resource "google_container_node_pool" "my_node_pool" {
+  name = "my-node-pool"
+  project = var.project
+  location = var.region
+  cluster = google_container_cluster.virtual-microwave.name
+  initial_node_count = var.workers_count
 
   # Definition of Cluster Nodes
   node_config {
@@ -48,8 +64,6 @@ resource "google_container_cluster" "virtual-microwave" {
       "https://www.googleapis.com/auth/datastore",
     ]
   }
-
-
 }
 
 #####################################################################
