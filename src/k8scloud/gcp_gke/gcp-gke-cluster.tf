@@ -26,45 +26,34 @@ resource "google_container_cluster" "virtual-microwave" {
     }
   }
 
+  # Specify the node pool configuration
   node_pool {
     name = "default-node-pool"
     initial_node_count = 1
+
+    # The autoscaling block for the default node pool
     autoscaling {
       min_node_count = 1
       max_node_count = 3
     }
+
+    node_config {
+      machine_type = "n1-standard-2"
+      disk_size_gb = 20
+      oauth_scopes = [
+        "https://www.googleapis.com/auth/devstorage.read_only",
+        "https://www.googleapis.com/auth/logging.write",
+        "https://www.googleapis.com/auth/monitoring",
+        "https://www.googleapis.com/auth/service.management.readonly",
+        "https://www.googleapis.com/auth/servicecontrol",
+        "https://www.googleapis.com/auth/trace.append",
+        "https://www.googleapis.com/auth/compute",
+        "https://www.googleapis.com/auth/datastore",
+      ]
+    }
   }
 }
 
-resource "google_container_node_pool" "my_node_pool" {
-  name = "my-node-pool"
-  project = var.project
-  location = var.region
-  cluster = google_container_cluster.virtual-microwave.name
-  initial_node_count = var.workers_count
-
-  # Definition of Cluster Nodes
-  node_config {
-    # Check machine types for Kubernetes Nodes in https://cloud.google.com/compute/docs/general-purpose-machines
-    # n1-standard-4 has 4xvCPU, 15 GB Memory
-    # n1-standard-2 has 2xvCPU, 7.5 GB Memory
-    machine_type = "n1-standard-2"
-    disk_size_gb = 20
-    # The OAuth 2.0 scopes requested to access Google APIs,
-    # depending on the level of access needed
-    # Check Scopes in https://developers.google.com/identity/protocols/oauth2/scopes
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
-      "https://www.googleapis.com/auth/service.management.readonly",
-      "https://www.googleapis.com/auth/servicecontrol",
-      "https://www.googleapis.com/auth/trace.append",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/datastore",
-    ]
-  }
-}
 
 #####################################################################
 # Output for K8S
