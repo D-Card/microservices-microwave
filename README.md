@@ -21,7 +21,6 @@ Once that's done you can deploy the infrastructure and the application:
 git clone git@gitlab.rnl.tecnico.ulisboa.pt:agisit/agisit23-g26.git
 cd src/k8scloud
 cp terraform.tfvars.example terraform.tfvars # and populate the file
-curl -L https://istio.io/downloadIstio | sh -
 terraform init
 terraform apply
 ```
