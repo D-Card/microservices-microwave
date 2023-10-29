@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
       docker.create_args = ["--cgroupns=host"]    
     end
 
-    mgdock.vm.synced_folder "../k8scloud/", "/home/vagrant/k8scloud", docker_consistency: "cached"
+    mgdock.vm.synced_folder "../src/k8scloud/", "/home/vagrant/k8scloud", docker_consistency: "cached"
     # Provisioning
     mgdock.vm.provision "shell", inline: 'sudo apt-get -y update; sudo apt-get -y install sl'
     mgdock.vm.provision :shell, path: "bootstrap-mgmt.sh"
-    mgvb.vm.provision "shell", inline: "mv /home/vagrant/istio-1.19.3 /home/vagrant/k8scloud/"
+    mgdock.vm.provision "shell", inline: "mv /home/vagrant/istio-1.19.3 /home/vagrant/k8scloud/"
   end
 end
